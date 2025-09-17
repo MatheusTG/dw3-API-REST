@@ -21,8 +21,24 @@ export class ContatoController {
     return reply.send(contato);
   }
 
+  async getContatoByEmail(request, reply) {
+    const { email } = request.query;
+    let contato;
+    try {
+      contato = this.contatoService.getContatoByEmail(email);
+    } catch (error) {
+      return reply.code(404).send({ message: error.message });
+    }
+    return reply.send(contato);
+  }
+
   async createContato(request, reply) {
-    const novoContato = this.contatoService.createContato(request.body);
+    let novoContato;
+    try {
+      novoContato = this.contatoService.createContato(request.body);
+    } catch (error) {
+      return reply.code(400).send({ message: error.message });
+    }
     return reply.code(201).send(novoContato);
   }
 

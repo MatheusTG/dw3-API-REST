@@ -14,9 +14,20 @@ export class ContatoService {
     return this.contatoRepository.findById(id);
   }
 
+  getContatoByEmail(email) {
+    const contato = this.contatoRepository.findByEmail(email);
+    if (!contato) {
+      throw new Error("Contato não encontrado");
+    }
+    return contato;
+  }
+
   createContato(contatoData) {
     // No futuro, regras de negócio como "verificar email duplicado"
     // viveriam aqui, ANTES de chamar o repositório.
+    if (contatoData.name.lenght < 3) {
+      throw new Error("Nome deve ter pelo menos 3 caracteres");
+    }
     return this.contatoRepository.create(contatoData);
   }
 

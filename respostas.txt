@@ -1,0 +1,37 @@
+1. (0.5 ponto) Qual problema principal a Injeção de Dependência (DI), introduzida na Etapa 3, resolve?
+R: b) O "Acoplamento Forte", onde uma classe cria diretamente as instâncias de suas dependências.
+
+2. (0.5 ponto) Na Etapa 2, qual foi a principal função da camada de Repository?
+R: b) Ser a única camada responsável pelo acesso aos dados (buscar, salvar, etc.).
+
+3. (0.5 ponto) Qual é a principal responsabilidade da camada de Controller em uma arquitetura MVC?
+R: b) Receber requisições HTTP, chamar a camada de serviço e formatar a resposta.
+
+4. (1.5 ponto) Descreva brevemente o fluxo de uma requisição DELETE /api/contatos/:id através das
+camadas da arquitetura da Etapa 3 (Routes -> Controller -> Service -> Repository). Explique o papel de
+cada camada nesse processo.
+R: Primeiro na camada "routes" será recebido o "request" da requisição, o qual ira conter o parametro "id" que é passado na routa, em seguida o "request", juntamente com o "reply" serão passado para o "Controller", o qual terá a função de receber a requisição HTTP, chamar a camada de "Service" e formatar uma resposta para a requisição. Na camada "Service" chamada pelo "Controller" será trabalhado as regras de negócio da aplicação, como validações se o "id" existe por exemplo antes se solicitar a camada "Repository" a deleção do contato. A camada "Repository" será a responsável por fazer os acessos diretos ao banco de dados, executanto assim a delação do contato no banco de dados.
+
+5. (0.5 ponto) Qual camada é a mais apropriada para conter uma regra de negócio como "verificar se
+um e-mail já existe no banco de dados antes de criar um novo usuário"?
+R: b) Service
+
+6. (0.5 ponto) O que caracteriza o anti-padrão "Fat Model" (Modelo Gordo), visto na Etapa 1?
+R: d) Uma camada de Controller que contém toda a lógica da aplicação.
+
+7. (0.5 ponto) Na "Etapa 0", qual dos seguintes problemas NÃO era uma consequência direta da
+abordagem de arquivo único?
+R: c) Performance lenta da API devido ao uso do Fastify.
+
+8. (1.5 ponto) Explique, com suas palavras, por que a testabilidade da aplicação melhora drasticamente
+ao sair da "Etapa 2" (Acoplamento Forte) para a "Etapa 3" (Injeção de Dependência).
+R: A testabilidade melhora drasticamente pois com a Injeção de Dependência se torma significantemente mais facíl de fazer testes de forma isolada, além de permitir o uso de mock das dependências por exemplo.
+
+9. (0.5 ponto) Qual é a principal ideia por trás da "Arquitetura em Fatias Verticais" (Vertical Slice), vista
+na Etapa 4?
+R: c) Organizar o código por funcionalidade (feature), colocando todos os arquivos relacionados a uma feature
+(controller, service, etc.) juntos em um mesmo módulo.
+
+10. (0.5 ponto) Como uma dependência é tipicamente "injetada" em uma classe na abordagem vista na
+Etapa 3?
+R: a) A dependência é passada como um argumento para o construtor da classe.
